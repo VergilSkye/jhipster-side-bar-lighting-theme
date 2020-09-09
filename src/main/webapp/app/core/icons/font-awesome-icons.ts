@@ -35,9 +35,16 @@ import {
   // jhipster-needle-add-icon-import
   faHome,
   faCog,
+  faGlobe,
+  faAlignCenter,
+  faTable,
+  faTv,
+  faGem,
+  faChevronUp,
+  faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { faBell as farBell, faEnvelope as farEnvelope, faUser as farUser } from '@fortawesome/free-regular-svg-icons';
+import { faEnvelope as farEnvelope, faUser as farUser } from '@fortawesome/free-regular-svg-icons';
 
 export const fontAwesomeIcons = [
   faUser,
@@ -76,7 +83,14 @@ export const fontAwesomeIcons = [
   // jhipster-needle-add-icon-import
   faAsterisk,
   faCog,
-  farBell,
+  faBell,
   farEnvelope,
   farUser,
+  faGlobe,
+  faAlignCenter,
+  faTable,
+  faTv,
+  faGem,
+  faChevronUp,
+  faChevronDown,
 ];

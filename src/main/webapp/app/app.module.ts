@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import './vendor';
 import { MyversionSharedModule } from 'app/shared/shared.module';
@@ -19,6 +20,7 @@ import { LightingNavbarComponent, LightingSidebarComponent } from './layouts/lig
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     MyversionSharedModule,
     MyversionCoreModule,
     MyversionHomeModule,

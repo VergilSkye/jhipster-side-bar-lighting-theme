@@ -19,6 +19,7 @@
         "register": "Criar uma conta"
       },
       "admin": {
+        "users": "Usuários",
         "main": "Administração",
         "userManagement": "Gerenciamento de usuário",
         "tracker": "Rastreamento de usuário",

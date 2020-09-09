@@ -114,8 +114,8 @@ body {
 
             &:hover,
             &.active {
-              background: #f5f5f9;
-              color: rgba($sidebar-color, 0.9);
+              background: rgba($sidebar-color, 0.9);
+              color: #f5f5f9;
 
               fa-icon {
                 color: #95b0ff;

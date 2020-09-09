@@ -1,67 +1,149 @@
-<aside class="lighting-sidebar shadow-sm">
+<span [ngSwitch]="isAuthenticated()" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']">
+  <aside class="lighting-sidebar shadow-sm">
 
-  <div class="sidebar-profile d-flex flex-column justify-content-center pt-5 pb-3">
-    <div class="picture-wrapper mb-4">
-      <div class="user-picture m-auto">
-        <img src="../../../../content/images/logo-jhipster.png" class="img-fluid" alt="">
+    <div class="sidebar-profile d-flex flex-column justify-content-center pt-5 pb-3">
+      <div class="picture-wrapper mb-4">
+        <div class="user-picture m-auto">
+          <img src="../../../../content/images/lighting/user.jpg" class="img-fluid" alt="">
+        </div>
       </div>
-    </div>
-    <div class="profile-details text-center pb-4">
-      <p class="mb-0 text-uppercase name">Jhon Doe</p>
-      <small class="text-uppercase role">Administrator</small>
-    </div>
-  </div>
-  <div class="sidebar-search pt-1 pb-1 pl-3 pr-3">
-    <input type="search" class="form-control rounded-pill" name="search" placeholder="Search ...">
-  </div>
-  <nav class="sidebar-menu pt-3 pb-3">
-    <div class="menu-header mt-3 mb-2">
-      Components
-    </div>
-    <ul class="menu-items">
-      <li >
-        <a href="#" routerLink="/dashboard" routerLinkActive="active">
-          <i class="fa fa-tv"></i>
-          <span>Dashboard</span>
-          <span class="badge badge-warning rounded-0 text-dark p-1">NEW</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" routerLink="/forms" routerLinkActive="active">
-          <i class="fas fa-gem"></i>
-          <span>Forms</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" routerLink="/tables" routerLinkActive="active">
-          <i class="fa fa-table"></i>
-          <span>Tables</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" routerLink="/typography" routerLinkActive="active">
-          <i class="fa fa-align-center"></i>
-          <span>Typography</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" routerLink="/maps" routerLinkActive="active">
-          <i class="fa fa-globe"></i>
-          <span>Maps</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" routerLink="/notifications" routerLinkActive="active">
-          <i class="fas fa-bell"></i>
-          <span>Notifications</span>
-        </a>
-      </li>
-    </ul>
-    <div class="menu-header mt-4 mb-4">
-      Github Repo
-    </div>
-    <div class="view-source mb-3">
-      <a href="https://github.com/azouaoui-med/lightning-admin-angular" target="_blank" class="btn btn-block btn-lightning rounded-0">View Source</a>
-    </div>   
-  </nav>
-</aside>
+      <div class="profile-details text-center pb-4">
+        <p class="mb-0 text-uppercase name">{{currentAccount?.firstName}}</p>
+        <small class="text-uppercase role">{{currentAccount?.authorities?.join(', ')}}</small>
+      </div>
+    </div>    
+    <nav class="sidebar-menu pt-3 pb-3">   
+      <ul class="menu-items">
+        <li>
+          <a (click)="isCollapsed1 = !isCollapsed1"
+          [attr.aria-expanded]="!isCollapsed1"
+          ngbTooltip="{{ 'global.menu.admin.main' | translate }}"
+          placement="right" [openDelay]="300">
+  
+              <fa-icon *ngIf="isCollapsed1" icon="chevron-down"></fa-icon>
+              <fa-icon *ngIf="!isCollapsed1" icon="chevron-up"></fa-icon>
+          <span jhiTranslate="global.menu.admin.main">Administration</span>
+          </a>
+          <ul
+              id="submenu-user"
+              [@smoothCollapse]="isCollapsed1?'initial':'final'"
+          >
+              <li>
+                  <a href="#"
+                      routerLink="admin/user-management"
+                      routerLinkActive="active"
+                      ngbTooltip="{{ 'global.menu.admin.users' | translate }}"                
+                      placement="right" [openDelay]="300">
+                      <fa-icon  icon="user"></fa-icon>
+                      <span hiTranslate="global.menu.admin.users">Users</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#" 
+                      routerLink="admin/metrics" 
+                      routerLinkActive="active"
+                      ngbTooltip="{{ 'global.menu.admin.metrics' | translate }}"
+                      placement="right" [openDelay]="300">
+                      <fa-icon icon="tachometer-alt" [fixedWidth]="true"></fa-icon>
+                      <span jhiTranslate="global.menu.admin.metrics">Metrics</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#" 
+                      routerLink="admin/health" routerLinkActive="active"
+                      ngbTooltip="{{ 'global.menu.admin.health' | translate }}"
+                      placement="right" [openDelay]="300">
+                      <fa-icon icon="heart" [fixedWidth]="true"></fa-icon>
+                      <span jhiTranslate="global.menu.admin.health">Health</span>
+                  </a>
+              </li>
+              <li>
+                <a href="#"
+                  routerLink="admin/configuration" routerLinkActive="active"
+                  ngbTooltip="{{ 'global.menu.admin.configuration' | translate }}"
+                  placement="right" [openDelay]="300">
+                  <fa-icon icon="list" [fixedWidth]="true"></fa-icon>
+                  <span jhiTranslate="global.menu.admin.configuration">Configuration</span>
+                </a>
+              </li>
+              <li>
+                <a href="#"            
+                  routerLink="admin/audits" routerLinkActive="active"
+                  ngbTooltip="{{ 'global.menu.admin.audits' | translate }}"
+                  placement="right" [openDelay]="300">
+                  <fa-icon icon="bell" [fixedWidth]="true"></fa-icon>
+                  <span jhiTranslate="global.menu.admin.audits">Audits</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"            
+                  routerLink="admin/logs" routerLinkActive="active"
+                  ngbTooltip="{{ 'global.menu.admin.logs' | translate }}"
+                  placement="right" [openDelay]="300">
+                  <fa-icon icon="tasks" [fixedWidth]="true"></fa-icon>
+                  <span jhiTranslate="global.menu.admin.logs">Logs</span>
+                </a>
+            </li>
+              <li *ngIf="swaggerEnabled">
+                <a href="#" 
+                  routerLink="admin/docs" routerLinkActive="active"
+                  routerLinkActive="active"
+                  ngbTooltip="{{ 'global.menu.admin.apidocs' | translate }}"
+                  placement="right" [openDelay]="300">
+                  <fa-icon icon="book" [fixedWidth]="true"></fa-icon>
+                  <span jhiTranslate="global.menu.admin.apidocs">API</span>
+                </a>
+              </li>
+              <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
+              <li *ngIf="!inProduction">
+                <a href="#"
+                  href='./h2-console' target="_tab" 
+                  ngbTooltip="{{ 'global.menu.admin.database' | translate }}"
+                  placement="right" [openDelay]="300">
+                  <fa-icon icon="hdd" [fixedWidth]="true"></fa-icon>
+                  <span jhiTranslate="global.menu.admin.database">Database</span>
+                </a>
+              </li>
+          </ul>
+        </li>
+        <li >
+          <a href="#" routerLink="/dashboard" routerLinkActive="active">
+            <fa-icon icon="tv"></fa-icon>
+            <span>Dashboard</span>
+            <span class="badge badge-warning rounded-0 text-dark p-1">NEW</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" routerLink="/forms" routerLinkActive="active">
+              <fa-icon icon="gem"></fa-icon>
+            <span>Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" routerLink="/tables" routerLinkActive="active">
+            <fa-icon icon="table"></fa-icon>
+            <span>Tables</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" routerLink="/typography" routerLinkActive="active">
+            <fa-icon icon="align-center"></fa-icon>
+            <span>Typography</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" routerLink="/maps" routerLinkActive="active">
+            <fa-icon icon="globe"></fa-icon>
+            <span>Maps</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" routerLink="/notifications" routerLinkActive="active">
+            <fa-icon icon="bell"></fa-icon>
+            <span>Notifications</span>
+          </a>
+        </li>
+      </ul>    
+    </nav>
+  </aside>
+</span>

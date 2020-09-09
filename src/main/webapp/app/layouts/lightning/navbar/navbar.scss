@@ -4,9 +4,13 @@
 /* ==========================================================================
 Navbar
 ========================================================================== */
+.no-line:hover {
+  text-decoration: none;
+}
 .dropdown-toggle::after {
   display: none;
 }
+
 .navbar-version {
   font-size: 0.65em;
   color: $navbar-dark-color;
@@ -34,17 +38,3 @@ Navbar
 /* ==========================================================================
 Logo styles
 ========================================================================== */
-.logo-img {
-  height: 45px;
-  width: 45px;
-  display: inline-block;
-  vertical-align: middle;
-  background: url('../../../../content/images/lighting/logo.png') no-repeat center center;
-  background-size: contain;
-}
-.logo-lg {
-  height: 35px;
-  width: 35px;
-  display: inline-block;
-  vertical-align: middle;
-}
