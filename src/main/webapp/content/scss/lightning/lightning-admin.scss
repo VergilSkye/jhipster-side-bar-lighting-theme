@@ -3,6 +3,16 @@
 @import './partials/sidebar';
 @import './partials/themes';
 
+.fa-icon-style {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 50%;
+  border: 1px solid;
+  font-size: 0.9rem;
+}
+
 body {
   height: 100vh;
   margin: 0;

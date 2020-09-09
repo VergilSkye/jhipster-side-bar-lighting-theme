@@ -42,13 +42,14 @@ body {
     .lighting-nav-link {
       color: $navbar-color;
 
-      // i { fa-icon
-      //   border-color: $navbar-color;
-      //   background: #282f48;
-      // }
+      fa-icon {
+        border-color: $navbar-color;
+        background: #282f48;
+      }
 
       &:hover {
         color: lighten($navbar-color, 15%);
+        text-decoration: none;
       }
     }
 
@@ -102,23 +103,23 @@ body {
           a {
             color: rgba($sidebar-color, 0.7);
 
-            // i { fa-icon
-            //   color: $sidebar-icon-color;
-            //   color: #abb7da;
-            //   color: rgba(140, 165, 239, 0.6);
-            //   border: none;
-            //   width: auto;
-            //   font-size: 1rem;
-            // }
+            fa-icon {
+              color: $sidebar-icon-color;
+              color: #abb7da;
+              color: rgba(140, 165, 239, 0.6);
+              border: none;
+              width: auto;
+              font-size: 1rem;
+            }
 
             &:hover,
             &.active {
               background: #f5f5f9;
               color: rgba($sidebar-color, 0.9);
 
-              // i { fa-icon
-              //   color: #95b0ff;
-              // }
+              fa-icon {
+                color: #95b0ff;
+              }
             }
           }
         }

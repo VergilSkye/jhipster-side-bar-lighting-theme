@@ -85,10 +85,10 @@
               letter-spacing: 0px;
               font-weight: 600;
 
-              // i { fa-icon
-              //   @extend .icon-style;
-              //   font-size: 1rem;
-              // }
+              fa-icon {
+                @extend .fa-icon-style;
+                font-size: 1rem;
+              }
 
               span {
                 color: inherit;
