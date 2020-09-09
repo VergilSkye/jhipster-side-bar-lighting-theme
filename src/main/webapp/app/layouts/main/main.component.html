@@ -1,13 +1,21 @@
+<!--The content below is only a placeholder and can be replaced.-->
 <jhi-page-ribbon></jhi-page-ribbon>
-
-<div>
-    <router-outlet name="navbar"></router-outlet>
+<div class="wrapper default-theme" [ngClass]="getClasses()">
+	<jhi-lighting-navbar></jhi-lighting-navbar>
+  <main>
+		<jhi-lighting-sidebar></jhi-lighting-sidebar>
+			<div class="pages container-fluid pt-2 pb-2 pl-4 pr-4 ">
+      	<div class="card jh-card">
+					<router-outlet></router-outlet>
+      	</div>      	
+      	<jhi-footer></jhi-footer>
+    	</div>
+    <div class="overlay" (click)="toggleSidebar()"></div>
+  </main>
 </div>
 
-<div class="container-fluid">
-    <div class="card jh-card">
-        <router-outlet></router-outlet>
-    </div>
 
-    <jhi-footer></jhi-footer>
-</div>
+
+
+
+

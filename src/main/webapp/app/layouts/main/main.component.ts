@@ -5,6 +5,8 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 import { AccountService } from 'app/core/auth/account.service';
 
+import { LightingService } from 'app/layouts/lightning';
+
 @Component({
   selector: 'jhi-main',
   templateUrl: './main.component.html',
@@ -13,6 +15,7 @@ export class MainComponent implements OnInit {
   private renderer: Renderer2;
 
   constructor(
+    private lightingService: LightingService,
     private accountService: AccountService,
     private titleService: Title,
     private router: Router,
@@ -56,5 +59,16 @@ export class MainComponent implements OnInit {
       pageTitle = 'global.title';
     }
     this.translateService.get(pageTitle).subscribe(title => this.titleService.setTitle(title));
+  }
+  /* LIGHTING THEME */
+  getClasses(): any {
+    const classes = {
+      'pinned-sidebar': this.lightingService.getSidebarStat().isSidebarPinned,
+      'toggeled-sidebar': this.lightingService.getSidebarStat().isSidebarToggeled,
+    };
+    return classes;
+  }
+  toggleSidebar(): void {
+    this.lightingService.toggleSidebar();
   }
 }
